@@ -1,0 +1,23 @@
+{
+  "name": "banks_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harsha-iiiv/banks_api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harsha-iiiv/banks_api/issues"
+  },
+  "homepage": "https://github.com/harsha-iiiv/banks_api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.17.1"
+  }
+}
