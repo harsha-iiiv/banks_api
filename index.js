@@ -1,5 +1,6 @@
 const express = require("express");
 const { Client } = require("pg");
+
 const connectionString =
   "postgres://rootuser@fyle:root@123@fyle.postgres.database.azure.com:5432/postgres";
 const client = new Client({
@@ -7,17 +8,29 @@ const client = new Client({
 });
 client.connect();
 var app = express();
+app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public"));
+
+app.use(express.json());
 app.set("port", process.env.PORT || 4000);
 app.get("/", function(req, res, next) {
+  
+    res.render("index", { name: "Click here" });
+  
+    // res.status(200).send(result.rows);
+  });
+app.get("/bank", function(req, res, next) {
   const text =
     "select branch, address , city , district , state , bank_name from bank_branches bb where ifsc = $1";
   const values = [req.query.ifsc];
   client.query(text, values, function(err, result) {
     if (err) {
-      console.log(err);
+      console.log(err); 
       res.status(400).send(err);
     }
-    res.status(200).send(result.rows);
+    res.render("ifsc", { name: result.rows[0] });
+  
+    // res.status(200).send(result.rows);
   });
 });
 
@@ -30,7 +43,9 @@ app.get("/details", function(req, res, next) {
       console.log(err);
       res.status(400).send(err);
     }
-    res.status(200).send(result.rows);
+    res.render("bank", { bank: result.rows });
+
+    // res.status(200).send(result.rows);
   });
 });
 app.listen(4000, function() {

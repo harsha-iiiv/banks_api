@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+    <title>Bank_api</title>
+</head>
+
+<body>
+    <div class="container" >
+    <div class = row >
+    <h1>Bank Details</h1>
+    </div>
+    <div class = row>
+    <form method="GET" action="/details">
+        <label for="name">Enter the   City & Bankname</label>
+        <input type="text" name="city"> 
+        <input type="text" name="bank_name"> 
+
+        <input type="submit" value="submit">
+    </form>
+    </div>
+    <div class = row>
+    <label>Details:</label>
+    <table  style="width:100%; border: 2px solid black">
+        <tr>
+            <th>Branch</th>
+            <th>Address</th>
+            <th>State</th>
+          </tr>
+        <% for(var i=0; i < bank.length; i++) { %>
+           
+           <tr>
+
+             <td style=" border: 1px solid black"><%= bank[i].branch %></td>
+             
+             <td style=" border: 1px solid black"><%= bank[i].address %></td>
+             <td style=" border: 1px solid black"><%= bank[i].state %></td>
+
+
+           </tr>
+           
+        <% } %>
+        </table>
+   
+   
+</div>
+</div>
+</body>
+
+</html>
