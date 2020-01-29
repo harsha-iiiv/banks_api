@@ -48,6 +48,6 @@ app.get("/details", function(req, res, next) {
     // res.status(200).send(result.rows);
   });
 });
-app.listen(4000, function() {
-  console.log("Server is running.. on Port 4000");
-});
+app.listen( app.get( 'port' ), function() {
+  console.log( 'Node server is running on port ' + app.get( 'port' ));
+  });
